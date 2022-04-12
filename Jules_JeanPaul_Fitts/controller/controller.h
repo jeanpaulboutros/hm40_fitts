@@ -1,8 +1,8 @@
 #ifndef MAINCONTROLLER_H
 #define MAINCONTROLLER_H
 
-#include"View/jpview.h"
-#include "Model/fittsmodel.h"
+#include"view/view.h"
+#include "model/fittsmodel.h"
 
 
 #include <QObject>

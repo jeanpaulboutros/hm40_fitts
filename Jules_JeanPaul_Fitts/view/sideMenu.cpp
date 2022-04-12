@@ -11,6 +11,8 @@ SideMenu::SideMenu(QWidget* parent) : QFrame(parent)
     initHelpButton();
 
     initExitButton();
+
+    //connect(this->getDataButton,SIGNAL(clicked()),mainController,SLOT(restartTest()));
 }
 
 

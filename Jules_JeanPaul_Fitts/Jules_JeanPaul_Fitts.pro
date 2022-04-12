@@ -15,6 +15,8 @@ SOURCES += \
     main.cpp \
     model/model.cpp \
     model/settingsdata.cpp \
+    view/GraphicWidget.cpp \
+    view/fittstest.cpp \
     view/graphScreen.cpp \
     view/saveMenu.cpp \
     view/settingsScreen.cpp \
@@ -25,6 +27,8 @@ HEADERS += \
     controller/controller.h \
     model/model.h \
     model/settingsdata.h \
+    view/GraphicWidget.h \
+    view/fittstest.h \
     view/graphScreen.h \
     view/saveMenu.h \
     view/settingsScreen.h \
