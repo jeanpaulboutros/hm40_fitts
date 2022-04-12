@@ -1,12 +1,13 @@
-#include "controller/controller.h"
+#include "view/view.h"
+#include "model/model.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication a(argc, argv);
-    Controller w;
-    w.show();
+    View v;
+    Model m;
+    v.show();
     return a.exec();
 }

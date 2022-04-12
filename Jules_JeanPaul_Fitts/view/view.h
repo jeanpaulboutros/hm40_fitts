@@ -1,31 +1,34 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-//#include "FittsView.h"
-//#include "ResultsView.h"
-#include "controller/controller.h"
-#include <QGuiApplication>
-//#include <QPolarChart>
-#include <QScreen>
+#include <QObject>
+#include <QFrame>
 #include <QMainWindow>
-#include<QStackedLayout>
-#include<QLabel>
+#include <QHBoxLayout>
 
-class controller;
+#include "sideMenu.h"
+#include "graphScreen.h"
+#include "saveMenu.h"
+#include "settingsScreen.h"
 
-class View : public QMainWindow
+
+class View : public QFrame
 {
     Q_OBJECT
+
 public:
-    View(controller *controller);
+
+    SideMenu* sideMenu;
+    GraphScreen* graphscreen;
+    SaveMenu* saveMenu;
+    SettingsScreen* settingsScreen;
+
+    View();
     ~View();
-    void initWindows(controller *controller);
+
 private:
-    void displayTitle(QLayout *mainLayout);
 
-    QStackedLayout *mainStack;
-
-    friend controller;
+    void initWindows();
 
 };
 

@@ -1,4 +1,0 @@
-#ifndef MAINMENUVIEW_H
-#define MAINMENUVIEW_H
-
-#endif // MAINMENUVIEW_H
