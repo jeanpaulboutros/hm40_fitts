@@ -9,6 +9,11 @@ View::View() : QFrame(0)
     this->graphscreen = new GraphScreen(this);
     this->layout()->addWidget(this->graphscreen);
 
+    this->saveMenu = new SaveMenu(this);
+    this->layout()->addWidget(this->saveMenu);
+
+
+
 }
 
 View::View(Controller *mainController){
@@ -58,4 +63,13 @@ void View::displayTitle(QLayout *mainLayout){
     label->setStyleSheet("background-color : #ddd;");
     label->setFixedHeight(90*factor);
 }
+
+void View::loadStyleSheet(QApplication *app) {
+    QFile styleFile(":/assets/stylesheet.qss");
+    styleFile.open( QFile::ReadOnly );
+    app->setStyleSheet( QString::fromLatin1( styleFile.readAll() ) );
+    styleFile.close();
+}
+
+
 

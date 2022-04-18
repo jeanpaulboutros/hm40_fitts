@@ -40,11 +40,14 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES += \
+#DISTFILES += \
+#    assets/stylesheet.qss
 
 
 RESOURCES += \
     assets/right-arrow.png \
     assets/left-arrow.png \
     assets/equation2.png \
-    assets/save.png
+    assets/save.png \
+    assets/play.png \
+    assets/stylesheet.qss

@@ -33,7 +33,7 @@ void SettingsScreen::createMaxSizeTargetOption()
     this->maxSizeTargetLabel = new QLabel(this);
     this->maxSizeTargetLabel->setMinimumSize(200, 200);
     this->maxSizeTargetLabel->setMaximumSize(200, 200);
-    this->maxSizeTargetLabel->setStyleSheet("border: 2px solid black");
+    //this->maxSizeTargetLabel->setStyleSheet("border: 2px solid black");
 
     QHBoxLayout* maxSizeOptionLayout = new QHBoxLayout();
 

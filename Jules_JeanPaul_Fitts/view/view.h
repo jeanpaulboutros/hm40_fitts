@@ -34,13 +34,13 @@ public:
     ~View();
     View(Controller *mainController);
     void initWindows(Controller *mainController);
+    void loadStyleSheet(QApplication *app);
 
 
 private:
 
     void initWindows();
     void displayTitle(QLayout *mainLayout);
-
     FittsTest *fittsTest;
     QStackedLayout *mainStack;
 
