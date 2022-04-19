@@ -1,4 +1,5 @@
 #include "fittstest.h"
+
 #include<QGuiApplication>
 #include<QScreen>
 
@@ -49,7 +50,7 @@ void FittsTest::displayButton(QBoxLayout *graphicLayout){
 }
 
 void FittsTest::displayTest(QLayout *graphicLayout){
-    this->graphicWidget = new GraphicWidget;
+    this->graphicWidget = new GraphicWidget();
     graphicLayout->addWidget(this->graphicWidget);
     this->graphicWidget->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff);
     this->graphicWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

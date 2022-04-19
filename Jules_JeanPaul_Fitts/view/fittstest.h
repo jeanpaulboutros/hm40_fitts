@@ -1,8 +1,8 @@
 #ifndef FITTSTEST_H
 #define FITTSTEST_H
 
-#include "Controller/controller.h"
 #include "GraphicWidget.h"
+#include "controller/controller.h"
 
 #include <QStackedLayout>
 #include <QPushButton>
@@ -14,8 +14,6 @@
 #include <QWidget>
 #include <QLabel>
 #include <QGroupBox>
-
-class Controller;
 
 class FittsTest :  public QObject
 {

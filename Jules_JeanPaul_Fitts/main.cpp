@@ -6,8 +6,11 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    View v;
-    Model m;
-    v.show();
+    FittsModel* m = new FittsModel();
+    View* v = new View(m);
+    Controller* c = new Controller(m, v);
+
+
+    v->show();
     return a.exec();
 }

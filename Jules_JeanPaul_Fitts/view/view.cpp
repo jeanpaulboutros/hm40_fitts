@@ -1,19 +1,22 @@
 #include "view.h"
 View::View() : QFrame(0)
 {
-    initWindows();
 
-    this->sideMenu = new SideMenu(this);
-    this->layout()->addWidget(this->sideMenu);
-
-    this->graphscreen = new GraphScreen(this);
-    this->layout()->addWidget(this->graphscreen);
 
 }
 
-View::View(Controller *mainController){
-    this->initWindows(mainController);
-};
+View::View(FittsModel* mainModel) : View(){
+    //initWindows(mainController);
+    this->mainModel = mainModel;
+    initWindows();
+
+    this->sideMenu = new SideMenu(this);
+    this->settingsScreen = new SettingsScreen(this, this->mainModel);
+    //this->graphscreen = new GraphScreen(this);
+
+    this->layout()->addWidget(this->sideMenu);
+    this->layout()->addWidget(this->settingsScreen);
+}
 
 
 View::~View()

@@ -1,6 +1,9 @@
 #ifndef SETTINGSSCREEN_H
 #define SETTINGSSCREEN_H
 
+
+#include "model/fittsmodel.h"
+
 #include <QObject>
 #include <QWidget>
 #include <QFrame>
@@ -29,7 +32,9 @@ public:
     QLabel* maxSizeDescLabel;
     QLabel* nbTargetDesc;
 
-    SettingsScreen(QWidget* parent);
+    FittsModel* model;
+
+    SettingsScreen(QWidget* parent, FittsModel* model);
     ~SettingsScreen();
 
 private:
@@ -38,6 +43,7 @@ private:
     void createMinSizeTargetOption();
     void createNbTargetOption();
     void initStyle();
+
 };
 
 #endif // SETTINGSSCREEN_H

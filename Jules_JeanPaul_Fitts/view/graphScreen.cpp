@@ -36,7 +36,7 @@ void GraphScreen::createChartView()
 
     /*****************************************************************/
 
-    this->chartView = new QtCharts::QChartView(this);
+    this->chartView = new QChartView(this);
     this->upperGraphLayout->addWidget(this->chartView);
 
     /*****************************************************************/

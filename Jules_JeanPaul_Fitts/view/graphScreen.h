@@ -7,7 +7,7 @@
 #include <QHBoxLayout>
 #include <QSlider>
 #include <QGroupBox>
-#include <QChartView>
+#include <QtCharts>
 #include <QPushButton>
 #include <QPixmap>
 #include <QIcon>
@@ -25,7 +25,7 @@ public:
     QPushButton* leftArrow;
     QPushButton* rightArrow;
 
-    QtCharts::QChartView* chartView;
+    QChartView* chartView;
 
     QSlider* aValueSlider;
     QSlider* bValueSlider;

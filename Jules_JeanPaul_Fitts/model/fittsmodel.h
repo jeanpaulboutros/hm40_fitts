@@ -11,6 +11,19 @@ class FittsModel
 public:
     FittsModel();
     ~FittsModel();
+
+    int getMinSize() const;
+    void setMinSize(int newMinSize);
+
+    int getMaxSize() const;
+    void setMaxSize(int newMaxSize);
+
+    double getA() const;
+    void setA(double newA);
+
+    double getB() const;
+    void setB(double newB);
+
 private:
     int cibleLeft = 0;
     int nbCible = 10;

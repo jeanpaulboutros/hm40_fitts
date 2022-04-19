@@ -2,8 +2,9 @@
 
 
 
-SettingsScreen::SettingsScreen(QWidget* parent) : QFrame(parent)
+SettingsScreen::SettingsScreen(QWidget* parent, FittsModel* model) : QFrame(parent)
 {
+    this->model = model;
     initStyle();
     createNbTargetOption();
     createMinSizeTargetOption();
@@ -93,6 +94,7 @@ void SettingsScreen::createNbTargetOption()
 
     this->mainLayout->addWidget(this->nbTargetSlider);
     this->mainLayout->setAlignment(this->nbTargetSlider, Qt::AlignLeft);
+
 }
 
 void SettingsScreen::initStyle()

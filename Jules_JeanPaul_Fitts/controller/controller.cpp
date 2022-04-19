@@ -1,11 +1,13 @@
-#include "Controller/controller.h"
+#include "controller/controller.h"
 
-Controller::Controller()
-
+Controller::Controller(FittsModel* mainModel, View* mainView)
 {
-    this->mainView = new View(this);
-    this->start();
-    this->startSimulation();
+    this->fittsModel = mainModel;
+    this->mainView = mainView;
+    this->settingsController = new SettingsController(this->mainView->settingsScreen);
+
+    //this->start();
+    //this->startSimulation();
 }
 
 Controller::~Controller()

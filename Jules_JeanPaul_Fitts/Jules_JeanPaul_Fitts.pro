@@ -11,8 +11,10 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    controller/controller.cpp \
+    controller/settingscontroller.cpp \
     main.cpp \
+    controller/controller.cpp \
+    model/fittsmodel.cpp \
     model/model.cpp \
     model/settingsdata.cpp \
     view/GraphicWidget.cpp \
@@ -25,6 +27,8 @@ SOURCES += \
 
 HEADERS += \
     controller/controller.h \
+    controller/settingscontroller.h \
+    model/fittsmodel.h \
     model/model.h \
     model/settingsdata.h \
     view/GraphicWidget.h \
@@ -32,8 +36,9 @@ HEADERS += \
     view/graphScreen.h \
     view/saveMenu.h \
     view/settingsScreen.h \
-    view/sideMenu.h \
-    view/view.h
+    view/view.h \
+    view/sideMenu.h
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
