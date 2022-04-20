@@ -6,11 +6,12 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    FittsModel* m = new FittsModel();
+
+    SettingsModel* m = new SettingsModel();
     View* v = new View(m);
     Controller* c = new Controller(m, v);
 
-
+    v->loadStyleSheet(&a);
     v->show();
     return a.exec();
 }

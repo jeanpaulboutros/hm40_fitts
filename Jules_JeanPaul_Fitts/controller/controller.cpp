@@ -1,10 +1,10 @@
 #include "controller/controller.h"
 
-Controller::Controller(FittsModel* mainModel, View* mainView)
+Controller::Controller(SettingsModel* mainModel, View* mainView)
 {
     this->fittsModel = mainModel;
     this->mainView = mainView;
-    this->settingsController = new SettingsController(this->mainView->settingsScreen);
+    this->settingsController = new SettingsController(this->mainView->settingsScreen, this->fittsModel);
 
     //this->start();
     //this->startSimulation();

@@ -1,7 +1,7 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "model/fittsmodel.h"
+#include "model/settingsModel.h"
 #include "view/view.h"
 #include "controller/settingscontroller.h"
 
@@ -14,7 +14,7 @@
 
 
 class FittsTest;
-class FittsModel;
+class SettingsModel;
 class View;
 
 class Controller : public QObject
@@ -22,7 +22,7 @@ class Controller : public QObject
     Q_OBJECT
 
 public:
-    Controller(FittsModel* mainModel, View* mainView);
+    Controller(SettingsModel* mainModel, View* mainView);
     ~Controller();
     void start();
     double getA();
@@ -36,7 +36,7 @@ private:
     void finish();
     void nextCible();
     QElapsedTimer* timer;
-    FittsModel* fittsModel;
+    SettingsModel* fittsModel;
     View* mainView;
 
 private slots:

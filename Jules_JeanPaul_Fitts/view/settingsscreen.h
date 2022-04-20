@@ -2,7 +2,7 @@
 #define SETTINGSSCREEN_H
 
 
-#include "model/fittsmodel.h"
+#include "model/settingsModel.h"
 
 #include <QObject>
 #include <QWidget>
@@ -32,9 +32,9 @@ public:
     QLabel* maxSizeDescLabel;
     QLabel* nbTargetDesc;
 
-    FittsModel* model;
+    SettingsModel* model;
 
-    SettingsScreen(QWidget* parent, FittsModel* model);
+    SettingsScreen(QWidget* parent, SettingsModel* model);
     ~SettingsScreen();
 
 private:

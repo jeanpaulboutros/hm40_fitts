@@ -23,7 +23,7 @@ void SaveMenu::createOpenSaveButton()
 
 void SaveMenu::initStyle()
 {
-    this->setStyleSheet("QFrame { background-color: grey }");
+    //this->setStyleSheet("QFrame { background-color: #bdbbb9 }");
     this->setMaximumWidth(75);
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(0);

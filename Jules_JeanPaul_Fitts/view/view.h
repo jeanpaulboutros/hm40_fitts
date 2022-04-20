@@ -15,7 +15,7 @@
 #include "saveMenu.h"
 #include "settingsScreen.h"
 #include "fittstest.h"
-#include "model/fittsmodel.h"
+#include "model/settingsModel.h"
 
 class Controller;
 class FittsTest;
@@ -30,22 +30,24 @@ public:
     GraphScreen* graphscreen;
     SaveMenu* saveMenu;
     SettingsScreen* settingsScreen;
-    Controller* controller;
 
     View();
     ~View();
-    View(FittsModel* mainModel);
-    void initWindows(Controller *mainController);
+    View(SettingsModel* mainModel);
+//    void initWindows(Controller *mainController);
+    void loadStyleSheet(QApplication *app);
 
 
 private:
 
-    void initWindows();
-    void displayTitle(QLayout *mainLayout);
-
-    FittsModel* mainModel;
+    SettingsModel* mainModel;
     FittsTest* fittsTest;
     QStackedLayout *mainStack;
+
+    void initWindows();
+//    void displayTitle(QLayout *mainLayout);
+
+
 
     friend Controller;
 

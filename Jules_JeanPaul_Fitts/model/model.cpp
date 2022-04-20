@@ -3,7 +3,7 @@
 
 Model::Model()
 {
-    this->settingsData = new SettingsData();
+
 }
 
 

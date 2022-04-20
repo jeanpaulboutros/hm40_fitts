@@ -14,9 +14,8 @@ SOURCES += \
     controller/settingscontroller.cpp \
     main.cpp \
     controller/controller.cpp \
-    model/fittsmodel.cpp \
     model/model.cpp \
-    model/settingsdata.cpp \
+    model/settingsModel.cpp \
     view/GraphicWidget.cpp \
     view/fittstest.cpp \
     view/graphScreen.cpp \
@@ -28,9 +27,8 @@ SOURCES += \
 HEADERS += \
     controller/controller.h \
     controller/settingscontroller.h \
-    model/fittsmodel.h \
     model/model.h \
-    model/settingsdata.h \
+    model/settingsModel.h \
     view/GraphicWidget.h \
     view/fittstest.h \
     view/graphScreen.h \
@@ -46,10 +44,13 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    assets/stylesheet.qss
 
 
 RESOURCES += \
     assets/right-arrow.png \
     assets/left-arrow.png \
     assets/equation2.png \
-    assets/save.png
+    assets/save.png \
+    assets/play.png \
+    assets/stylesheet.qss

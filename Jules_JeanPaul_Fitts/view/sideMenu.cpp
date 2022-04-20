@@ -1,4 +1,9 @@
 #include "sideMenu.h"
+#include "QLabel.h"
+#include "QApplication.h"
+#include "QStyle.h"
+#include "QFont.h"
+
 
 
 SideMenu::SideMenu(QWidget* parent) : QFrame(parent)
@@ -12,7 +17,8 @@ SideMenu::SideMenu(QWidget* parent) : QFrame(parent)
 
     initExitButton();
 
-    //connect(this->getDataButton,SIGNAL(clicked()),mainController,SLOT(restartTest()));
+
+     //connect(this->getDataButton,SIGNAL(clicked()),mainController,SLOT(restartTest()));
 }
 
 
@@ -25,7 +31,7 @@ SideMenu::~SideMenu()
 void SideMenu::initStyle()
 {
     this->setMaximumWidth(200);
-    this->setStyleSheet("QFrame { background-color: grey }");
+    //this->setStyleSheet("QFrame { background-color: #bdbbb9 }");
 
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(0);
@@ -43,7 +49,25 @@ void SideMenu::initStyle()
 
 void SideMenu::initGetDataButton()
 {
-    this->getDataButton = new QPushButton("Get Data", this);
+    this->getDataButton = new QPushButton("", this);
+    this->getDataButton->setObjectName("getData");
+    this->getDataButton->setCheckable(true);
+
+
+    QPixmap image(":/assets/play.png");
+    QIcon icon(image);
+    this->getDataButton->setIconSize(QSize(20, 20));
+    this->getDataButton->setIcon(icon);
+    this->getDataButton->setStyleSheet("text-align:left;");
+    this->getDataButton->setLayout(new QHBoxLayout );
+
+    QLabel* textLabel = new QLabel("Get Data");
+    textLabel->setAlignment(Qt::AlignCenter);
+    textLabel->setAttribute(Qt::WA_TransparentForMouseEvents, true);
+
+    this->getDataButton->layout()->addWidget(textLabel);
+
+
 
     QSizePolicy* buttonSizePolicy = new QSizePolicy();
     buttonSizePolicy->setHorizontalPolicy(QSizePolicy::Expanding);
@@ -55,6 +79,7 @@ void SideMenu::initGetDataButton()
 void SideMenu::initAnalyseButton()
 {
     this->analyseButton = new QPushButton("Analyse", this);
+    this->analyseButton->setCheckable(true);
 
     QSizePolicy* buttonSizePolicy = new QSizePolicy();
     buttonSizePolicy->setHorizontalPolicy(QSizePolicy::Expanding);
@@ -66,6 +91,7 @@ void SideMenu::initAnalyseButton()
 void SideMenu::initSettingsButton()
 {
     this->settingsButton = new QPushButton("Settings", this);
+    this->settingsButton->setCheckable(true);
 
     QSizePolicy* buttonSizePolicy = new QSizePolicy();
     buttonSizePolicy->setHorizontalPolicy(QSizePolicy::Expanding);
@@ -77,6 +103,7 @@ void SideMenu::initSettingsButton()
 void SideMenu::initHelpButton()
 {
     this->helpButton = new QPushButton("Help", this);
+    this->helpButton->setCheckable(true);
 
     QSizePolicy* buttonSizePolicy = new QSizePolicy();
     buttonSizePolicy->setHorizontalPolicy(QSizePolicy::Expanding);
@@ -88,6 +115,8 @@ void SideMenu::initHelpButton()
 void SideMenu::initExitButton()
 {
     this->exitButton = new QPushButton("Exit", this);
+    this->exitButton->setObjectName("exit");
+    this->exitButton->setCheckable(true);
 
     QSizePolicy* buttonSizePolicy = new QSizePolicy();
     buttonSizePolicy->setHorizontalPolicy(QSizePolicy::Expanding);

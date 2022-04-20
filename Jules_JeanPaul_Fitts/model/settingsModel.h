@@ -1,16 +1,16 @@
-#ifndef FITTSMODEL_H
-#define FITTSMODEL_H
+#ifndef SETTINGSMODEL_H
+#define SETTINGSMODEL_H
 
 #include <QPoint>
 #include <QList>
 
 class Controller;
 
-class FittsModel
+class SettingsModel
 {
 public:
-    FittsModel();
-    ~FittsModel();
+    SettingsModel();
+    ~SettingsModel();
 
     int getMinSize() const;
     void setMinSize(int newMinSize);
@@ -24,7 +24,13 @@ public:
     double getB() const;
     void setB(double newB);
 
+    void debugValue();
+
+    int getNbCible() const;
+    void setNbCible(int newNbCible);
+
 private:
+
     int cibleLeft = 0;
     int nbCible = 10;
     int minSize = 30;
@@ -40,4 +46,4 @@ private:
     friend Controller;
 };
 
-#endif // FITTSMODEL_H
+#endif // SETTINGSMODEL_H

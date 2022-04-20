@@ -36,8 +36,12 @@ void GraphScreen::createChartView()
 
     /*****************************************************************/
 
+
     this->chartView = new QChartView(this);
+    this->chartView->setStyleSheet("background-color: white;");
+
     this->upperGraphLayout->addWidget(this->chartView);
+
 
     /*****************************************************************/
 
@@ -90,8 +94,7 @@ void GraphScreen::createSliders()
 
 void GraphScreen::initStyle()
 {
-    this->setStyleSheet("QFrame { background-color: green }");
-
+    this->setObjectName("graphScreen");
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(0);
 

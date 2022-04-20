@@ -2,7 +2,7 @@
 
 
 
-SettingsScreen::SettingsScreen(QWidget* parent, FittsModel* model) : QFrame(parent)
+SettingsScreen::SettingsScreen(QWidget* parent, SettingsModel* model) : QFrame(parent)
 {
     this->model = model;
     initStyle();
