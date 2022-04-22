@@ -1,10 +1,11 @@
 #include "controller/controller.h"
 
-Controller::Controller(SettingsModel* mainModel, View* mainView)
+Controller::Controller(Model* mainModel, View* mainView)
 {
-    this->fittsModel = mainModel;
+    this->model = mainModel;
     this->mainView = mainView;
-    this->settingsController = new SettingsController(this->mainView->settingsScreen, this->fittsModel);
+    this->settingsController = new SettingsController(this->mainView->settingsScreen, this->model->settingsModel);
+    this->saveController = new SaveController(this->model->saveModel);
 
     //this->start();
     //this->startSimulation();
@@ -30,8 +31,8 @@ void Controller::quit() {
 }
 
 void Controller::cibleClicked(int x, int y) {
-    if(this->fittsModel->cercleCenter.isEmpty()) {
-        this->fittsModel->cibleLeft = this->fittsModel->nbCible;
+    if(this->model->settingsModel->cercleCenter.isEmpty()) {
+        this->model->settingsModel->cibleLeft = this->model->settingsModel->nbCible;
         // Si vide alors premier click, on demarre le timer
         this->timer->start();
 
@@ -40,7 +41,7 @@ void Controller::cibleClicked(int x, int y) {
     }
     else {
         QPointF coords = this->mainView->fittsTest->graphicWidget->mapToScene(x,y);
-        if(sqrt(pow(coords.x() - this->fittsModel->cercleCenter.last().x(),2) + pow(coords.y() - this->fittsModel->cercleCenter.last().y(),2)) <= this->fittsModel->cercleSize.last()/2) {
+        if(sqrt(pow(coords.x() - this->model->settingsModel->cercleCenter.last().x(),2) + pow(coords.y() - this->model->settingsModel->cercleCenter.last().y(),2)) <= this->model->settingsModel->cercleSize.last()/2) {
             // On stock le temps de click
             this->timer->restart();
 
@@ -51,14 +52,14 @@ void Controller::cibleClicked(int x, int y) {
 }
 
 void Controller::nextCible() {
-    if(!this->fittsModel->cercleCenter.isEmpty())
-        this->fittsModel->cibleLeft--;
+    if(!this->model->settingsModel->cercleCenter.isEmpty())
+        this->model->settingsModel->cibleLeft--;
 
     QGraphicsScene *scene = this->mainView->fittsTest->scene;
     scene->clear();
 
     // On stop si c'est finis
-    if(this->fittsModel->cibleLeft == 0) {
+    if(this->model->settingsModel->cibleLeft == 0) {
         this->finish();
         return;
     }
@@ -67,10 +68,10 @@ void Controller::nextCible() {
     // qrand() % ((high + 1) - low) + low;
     int size;
 
-    if(this->fittsModel->minSize == this->fittsModel->maxSize){
-        size = this->fittsModel->maxSize;
+    if(this->model->settingsModel->minSize == this->model->settingsModel->maxSize){
+        size = this->model->settingsModel->maxSize;
     }else{
-        size = QRandomGenerator::global()->bounded(this->fittsModel->minSize, this->fittsModel->maxSize);
+        size = QRandomGenerator::global()->bounded(this->model->settingsModel->minSize, this->model->settingsModel->maxSize);
     }
     qreal factor = QGuiApplication::primaryScreen()->logicalDotsPerInch()/120;
     size*=factor;
@@ -82,8 +83,8 @@ void Controller::nextCible() {
     qreal posY = QRandomGenerator::global()->bounded(size/2, sceneH-size);
 
     // On stock les infos sur le cercle
-    this->fittsModel->cercleCenter.append(QPoint(int(posX+size/2),int(posY+size/2)));
-    this->fittsModel->cercleSize.append(size);
+    this->model->settingsModel->cercleCenter.append(QPoint(int(posX+size/2),int(posY+size/2)));
+    this->model->settingsModel->cercleSize.append(size);
 
     // On place le cercle
     scene->addEllipse(posX, posY, size, size, QPen(QColor("red")),QBrush(QColor("red")));
@@ -110,29 +111,29 @@ void Controller::initGame() {
 void Controller::saveConfig(){
     QSettings settings("Garrido", "Fitts2.0");
 
-    settings.setValue("a", this->fittsModel->a);
-    settings.setValue("b", this->fittsModel->b);
+    settings.setValue("a", this->model->settingsModel->a);
+    settings.setValue("b", this->model->settingsModel->b);
 
-    settings.setValue("nbCible", this->fittsModel->nbCible);
-    settings.setValue("minSize", this->fittsModel->minSize);
-    settings.setValue("maxSize", this->fittsModel->maxSize);
+    settings.setValue("nbCible", this->model->settingsModel->nbCible);
+    settings.setValue("minSize", this->model->settingsModel->minSize);
+    settings.setValue("maxSize", this->model->settingsModel->maxSize);
 }
 
 double Controller::getA(){
-    return this->fittsModel->a;
+    return this->model->settingsModel->a;
 }
 
 double Controller::getB(){
-    return this->fittsModel->b;
+    return this->model->settingsModel->b;
 }
 
 int Controller::getNbCible(){
-    return this->fittsModel->nbCible;
+    return this->model->settingsModel->nbCible;
 }
 
 void Controller::restartTest(){
-    this->fittsModel->cercleSize.clear();
-    this->fittsModel->cercleCenter.clear();
+    this->model->settingsModel->cercleSize.clear();
+    this->model->settingsModel->cercleCenter.clear();
     this->mainView->mainStack->setCurrentIndex(0);
     this->startSimulation();
 }

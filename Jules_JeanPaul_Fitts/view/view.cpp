@@ -6,13 +6,13 @@ View::View() : QFrame(0)
 
 }
 
-View::View(SettingsModel* mainModel) : View(){
+View::View(Model* mainModel) : View(){
 
     this->mainModel = mainModel;
     initWindows();
 
     this->sideMenu = new SideMenu(this);
-    this->settingsScreen = new SettingsScreen(this, this->mainModel);
+    this->settingsScreen = new SettingsScreen(this, this->mainModel->settingsModel);
     //this->graphscreen = new GraphScreen(this);
 
     this->layout()->addWidget(this->sideMenu);

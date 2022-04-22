@@ -1,9 +1,10 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "model/settingsModel.h"
+#include "model/model.h"
 #include "view/view.h"
-#include "controller/settingscontroller.h"
+#include "settingscontroller.h"
+#include "savecontroller.h"
 
 #include <QObject>
 #include <QApplication>
@@ -12,9 +13,7 @@
 #include <QElapsedTimer>
 #include <Windows.h>
 
-
-class FittsTest;
-class SettingsModel;
+class SaveController;
 class View;
 
 class Controller : public QObject
@@ -22,7 +21,7 @@ class Controller : public QObject
     Q_OBJECT
 
 public:
-    Controller(SettingsModel* mainModel, View* mainView);
+    Controller(Model* mainModel, View* mainView);
     ~Controller();
     void start();
     double getA();
@@ -30,13 +29,14 @@ public:
     int getNbCible();
 
     SettingsController* settingsController;
+    SaveController* saveController;
 
 private:
     void initGame();
     void finish();
     void nextCible();
     QElapsedTimer* timer;
-    SettingsModel* fittsModel;
+    Model* model;
     View* mainView;
 
 private slots:

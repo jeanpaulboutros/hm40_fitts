@@ -15,7 +15,7 @@
 #include "saveMenu.h"
 #include "settingsScreen.h"
 #include "fittstest.h"
-#include "model/settingsModel.h"
+#include "model/model.h"
 
 class Controller;
 class FittsTest;
@@ -33,16 +33,16 @@ public:
 
     View();
     ~View();
-    View(SettingsModel* mainModel);
+    View(Model* mainModel);
 //    void initWindows(Controller *mainController);
     void loadStyleSheet(QApplication *app);
 
 
 private:
 
-    SettingsModel* mainModel;
+    Model* mainModel;
     FittsTest* fittsTest;
-    QStackedLayout *mainStack;
+    QStackedLayout* mainStack;
 
     void initWindows();
 //    void displayTitle(QLayout *mainLayout);

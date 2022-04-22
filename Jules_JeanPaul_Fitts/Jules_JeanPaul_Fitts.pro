@@ -16,6 +16,7 @@ SOURCES += \
     main.cpp \
     controller/controller.cpp \
     model/model.cpp \
+    model/savemodel.cpp \
     model/settingsModel.cpp \
     view/GraphicWidget.cpp \
     view/fittstest.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     controller/savecontroller.h \
     controller/settingscontroller.h \
     model/model.h \
+    model/savemodel.h \
     model/settingsModel.h \
     view/GraphicWidget.h \
     view/fittstest.h \
