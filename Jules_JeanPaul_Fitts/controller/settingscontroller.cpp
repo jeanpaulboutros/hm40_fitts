@@ -1,5 +1,6 @@
 #include "settingscontroller.h"
 
+
 SettingsController::SettingsController(SettingsScreen* settingsScreen, SettingsModel* settingsModel)
 {
     this->settingsScreen = settingsScreen;
@@ -20,7 +21,6 @@ void SettingsController::addSettingsConnection()
 }
 
 
-
 void SettingsController::changeNbOfTarget()
 {
     this->settingsModel->setNbCible(this->settingsScreen->nbTargetSlider->value());
@@ -31,11 +31,13 @@ void SettingsController::changeNbOfTarget()
 void SettingsController::changeMinSizeTarget()
 {
     this->settingsModel->setMinSize(this->settingsScreen->minSizeTargetSlider->value());
+    this->settingsScreen->renderMinSizeTargetScene();
     this->settingsModel->debugValue();
 }
 
 void SettingsController::changeMaxSizeTarget()
 {
     this->settingsModel->setMaxSize(this->settingsScreen->maxSizeTargetSlider->value());
+    this->settingsScreen->renderMaxSizeTargetScene();
     this->settingsModel->debugValue();
 }

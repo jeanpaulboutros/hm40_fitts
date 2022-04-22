@@ -12,6 +12,10 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QSpacerItem>
+#include <QPainter>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QSizePolicy>
 
 class SettingsScreen : public QFrame
 {
@@ -26,16 +30,20 @@ public:
     QSlider* minSizeTargetSlider;
     QSlider* maxSizeTargetSlider;
 
-    QLabel* minSizeTargetLabel;
-    QLabel* maxSizeTargetLabel;
+    QGraphicsView* minSizeTargetLabel;
+    QGraphicsView* maxSizeTargetLabel;
+
     QLabel* minSizeDescLabel;
     QLabel* maxSizeDescLabel;
     QLabel* nbTargetDesc;
 
-    SettingsModel* model;
+    SettingsModel* settingsModel;
 
     SettingsScreen(QWidget* parent, SettingsModel* model);
     ~SettingsScreen();
+
+    void renderMinSizeTargetScene();
+    void renderMaxSizeTargetScene();
 
 private:
 
