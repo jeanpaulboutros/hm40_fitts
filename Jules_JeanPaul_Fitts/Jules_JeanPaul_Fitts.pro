@@ -11,6 +11,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    controller/savecontroller.cpp \
     controller/settingscontroller.cpp \
     main.cpp \
     controller/controller.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
 
 HEADERS += \
     controller/controller.h \
+    controller/savecontroller.h \
     controller/settingscontroller.h \
     model/model.h \
     model/settingsModel.h \
