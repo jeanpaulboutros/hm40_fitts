@@ -6,6 +6,10 @@
 #include <QFrame>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QLabel>
+#include <QApplication>
+#include <QStyle>
+#include <QFont>
 
 class SideMenu : public QFrame
 {

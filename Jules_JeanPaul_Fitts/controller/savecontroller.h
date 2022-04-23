@@ -5,15 +5,20 @@
 #include "model/savemodel.h"
 
 
-class SaveController
+class SaveController : public QObject
 {
+    Q_OBJECT
 
 private:
     SaveModel* saveModel;
+    SaveMenu* saveScreen;
 
 public:
-    SaveController(SaveModel* model);
+    SaveController(SaveModel* model, SaveMenu* saveScreen);
 
+public slots:
+
+    void openMenu();
 
 };
 

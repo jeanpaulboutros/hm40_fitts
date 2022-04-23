@@ -1,9 +1,4 @@
 #include "sideMenu.h"
-#include "QLabel.h"
-#include "QApplication.h"
-#include "QStyle.h"
-#include "QFont.h"
-
 
 
 SideMenu::SideMenu(QWidget* parent) : QFrame(parent)

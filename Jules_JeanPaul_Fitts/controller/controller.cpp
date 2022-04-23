@@ -5,7 +5,7 @@ Controller::Controller(Model* mainModel, View* mainView)
     this->model = mainModel;
     this->mainView = mainView;
     this->settingsController = new SettingsController(this->mainView->settingsScreen, this->model->settingsModel);
-    this->saveController = new SaveController(this->model->saveModel);
+    this->saveController = new SaveController(this->model->saveModel, this->mainView->saveMenu);
 
 }
 

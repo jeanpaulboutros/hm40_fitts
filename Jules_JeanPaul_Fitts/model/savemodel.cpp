@@ -113,14 +113,13 @@ void SaveModel::test(){
     data.cercleSize = size;
 
     QList<qint64> time;
-    time.append(Q_INT64_C(932838457459459));
-    time.append(Q_INT64_C(932838232459459));
-    time.append(Q_INT64_C(132838457459459));
+    time.append(Q_INT64_C(1650636636));
+    time.append(Q_INT64_C(1650636639));
+    time.append(Q_INT64_C(1650636642));
     data.times = time;
 
     QJsonDocument doc( data.toJson());
     QString jsonString = doc.toJson(QJsonDocument::Indented);
-    qDebug() << jsonString.toStdString().c_str();
 
     this->saveContent(data);
 }
