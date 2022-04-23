@@ -12,12 +12,15 @@ View::View(Model* mainModel) : View(){
     initWindows();
 
     this->sideMenu = new SideMenu(this);
-    this->settingsScreen = new SettingsScreen(this, this->mainModel->settingsModel);
-    //this->graphscreen = new GraphScreen(this);
+    this->settingsScreen = new SettingsScreen(0, this->mainModel->settingsModel);
+    this->graphscreen = new GraphScreen(this);
+    this->saveMenu = new SaveMenu(this);
+
 
     this->layout()->addWidget(this->sideMenu);
-    this->layout()->addWidget(this->settingsScreen);
-    //this->layout()->addWidget(this->graphscreen);
+    //this->layout()->addWidget(this->settingsScreen);
+    this->layout()->addWidget(this->graphscreen);
+    this->layout()->addWidget(this->saveMenu);
 
 }
 

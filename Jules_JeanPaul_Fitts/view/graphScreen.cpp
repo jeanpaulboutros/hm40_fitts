@@ -5,7 +5,8 @@ GraphScreen::GraphScreen(QWidget* parent) : QFrame(parent)
     initStyle();
     createSliders();
     createChartView();
-    createEquation();
+    createEquationView();
+    initChronChart();
 }
 
 
@@ -15,7 +16,7 @@ GraphScreen::~GraphScreen()
 }
 
 
-void GraphScreen::createEquation()
+void GraphScreen::createEquationView()
 {
     QLabel* equation = new QLabel(this);
     QPixmap equationImage(":/assets/equation2.png");
@@ -105,6 +106,54 @@ void GraphScreen::initStyle()
     mainLayout->addLayout(this->sliderLayout);
 
 }
+
+void GraphScreen::initChronChart()
+{
+    this->chronChart = new QChart;
+    this->chartView->setChart(this->chronChart);
+    this->chronChart->setAnimationOptions(QChart::AllAnimations);
+    this->chronChart->createDefaultAxes();
+    this->chronChart->setBackgroundBrush(QBrush(QColor(150,150,150,255)));
+    this->chronChart->setBackgroundVisible(true);
+    this->chronChart->legend()->setLabelBrush(QBrush(QColor(0,0,0,255)));
+    this->chronChart->setTitleBrush(QBrush(QColor(0,0,0,255)));
+    this->chronChart->setTitle("Temps mis à cliquer sur une cible en fonction de la distance à parcourir pour l'atteindre");
+
+
+    this->chronChart->setVisible(true);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -12,9 +12,6 @@ int main(int argc, char *argv[])
     View* v = new View(m);
     Controller* c = new Controller(m, v);
 
-//    SaveController saveController;
-//    saveController.test();
-
     v->loadStyleSheet(&a);
     v->show();
 

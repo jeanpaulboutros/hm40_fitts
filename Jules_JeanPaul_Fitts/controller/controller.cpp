@@ -7,8 +7,6 @@ Controller::Controller(Model* mainModel, View* mainView)
     this->settingsController = new SettingsController(this->mainView->settingsScreen, this->model->settingsModel);
     this->saveController = new SaveController(this->model->saveModel);
 
-    //this->start();
-    //this->startSimulation();
 }
 
 Controller::~Controller()

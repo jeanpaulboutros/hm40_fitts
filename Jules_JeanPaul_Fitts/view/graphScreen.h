@@ -12,6 +12,8 @@
 #include <QPixmap>
 #include <QIcon>
 #include <QLabel>
+#include <QBrush>
+#include <QColor>
 
 class GraphScreen : public QFrame
 {
@@ -26,6 +28,8 @@ public:
     QPushButton* rightArrow;
 
     QChartView* chartView;
+    QChart* chronChart;
+    QChart* distChart;
 
     QSlider* aValueSlider;
     QSlider* bValueSlider;
@@ -33,11 +37,13 @@ public:
     GraphScreen(QWidget* parent);
     ~GraphScreen();
 
-    void createEquation();
+    void createEquationView();
     void createChartView();
     void createSliders();
     void initStyle();
 
+    void initChronChart();
+    void createDistChart();
 
 };
 
