@@ -23,8 +23,13 @@ void Help::displayStack(){
     this->description = new QWidget(this);
     QVBoxLayout* d = new QVBoxLayout(description);
     d->setSpacing(0);
+
     this->graphs = new QWidget(this);
-    this->variables = new QWidget(this);
+    QVBoxLayout* g = new QVBoxLayout(graphs);
+
+    //this->variables = new QWidget(this);
+    //VBoxLayout* v= new QVBoxLayout(variables);
+
     this->mainStack = new QStackedLayout(this);
 
     this->leftArrow = new QPushButton(this);
@@ -35,7 +40,7 @@ void Help::displayStack(){
     this->mainLayout->addWidget(leftArrow);
 
     this->mainStack->addWidget(description);
-    this->mainStack->addWidget(variables);
+    //this->mainStack->addWidget(variables);
     this->mainStack->addWidget(graphs);
 
     this->mainLayout->addLayout(mainStack);
@@ -62,12 +67,19 @@ void Help::displayStack(){
     lawDescription->setText("La loi de Fitts permet d’évaluer le temps de pointage nécessaire sur une cible de largeur L à une distance D. La formule proposée par Paul Fitts est ci-dessus où T est le temps moyen de mouvement, a et b des constantes ajustées empiriquement, D la distance au centre de la cible (appelé aussi amplitude du mouvement) , L la largeur de la cible. Le but du programme donc est de permettre à l’utilisateur de calculer le temps moyen de son mouvement sur un nombre de cibles dont il précise, et de visualiser son résultat sous forme d’un graphe.");
     lawDescription->setWordWrap(true);
     lawDescription->setAlignment(Qt::AlignHCenter);
+
+    QLabel* graphTitle = new QLabel(graphs);
     QLabel* graphDescription = new QLabel(graphs);
-    graphDescription->setText("BLABLALBLALBLABLBLALBLABLALBLABLALBLABLALBALB");
+    g->addWidget(graphTitle);
+    g->addWidget(graphDescription);
+    graphTitle->setText("<strong> <font size = 100 ; font color = 'blue'>Comprendre les graphs!</font> </strong>");
+    graphTitle->setAlignment(Qt::AlignHCenter);
+    graphDescription->setText("Les graphes fournies comme résultats représentent le Temps mis par l'utilisateur pour atteindre chaque cible. On peut remarquer deux courbes : la première est théorique, basée sur la formule de la loi de fitts, la deuxième est expérimentale. La différence principale entre c'est deux courbes sont les valeurs des constantes a et b prédéfinies par l'utilisateur. La courbe est constituée d'autant de points que le nombre de cibles prédéfini par l'utilisateur.Chaque point de la courbe possède comme abscisse l'ensemble de la largeur de la cible aléatoire et la distance entre son pointeur et le centre de la cible. Le temps calculé par la formule pour chaque cible représente l'ordonnée ");
     graphDescription->setWordWrap(true);
-    QLabel* varDescription = new QLabel(variables);
+    graphDescription->setAlignment(Qt::AlignHCenter);
+    /*QLabel* varDescription = new QLabel(variables);
     varDescription->setText("HOHOHOHOHOHOHOHOHOHOHOHHHHHHHHOHOOOOOOOOOOOOOHHHHHHHHHOOOOOOOOOOOH");
-    varDescription->setWordWrap(true);
+    varDescription->setWordWrap(true);*/
 }
 
 void Help::leftArrowClicked(){

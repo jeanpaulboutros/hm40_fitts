@@ -2,10 +2,13 @@
 
 TestController::TestController(FittsTest* fittsTest, TestModel* testModel)
 {
-    this->fittsTest=fittsTest;
+    this->fittsTest= fittsTest;
     this->fittsTest->show();
     this->testModel=testModel;
+    this->sm= new SettingsModel();
+
     connect(this->fittsTest->graphicWidget, SIGNAL(mouseClicked(int,int)), this, SLOT(cibleClicked(int,int)));
+    connect(this->fittsTest->restartBtn, SIGNAL(clicked()),this,SLOT(restartTest()));
 
 }
 
@@ -36,7 +39,6 @@ void TestController::nextCible(){
 
     if(!this->testModel->cercleCenter.isEmpty())
         this->testModel->cibleLeft--;
-    //this->fittsTest->updateTestMsg();
 
     QGraphicsScene *scene = this->fittsTest->scene;
     scene->clear();
@@ -71,15 +73,30 @@ void TestController::finish(){
     this->fittsTest->graphicWidget->setEnabled(false);
     this->fittsTest->saveBtn->setEnabled(true);
     this->fittsTest->saveBtn->setVisible(true);
-    this->fittsTest->testLabel->setText("<font color='Green'><strong>Done!</strong></font>");
-    //this->testModel->calculateResults();
-    //mainView->mainStack->setCurrentIndex(2);
+    this->fittsTest->testLabel->setVisible(false);
+    this->fittsTest->targetsLeft->setVisible(false);
+    this->testModel->calculateResults();
 }
 
 //SLOTS
+void TestController::restartTest(){
+    this->testModel->cercleCenter.clear();
+    this->testModel->cercleSize.clear();
+    this->testModel->clickPoints.clear();
+    this->testModel->times.clear();
+    this->fittsTest->graphicWidget->setEnabled(true);
+    this->testModel->nbCible=this->sm->getNbCible();
+    this->testModel->cibleLeft = this->sm->getNbCible();
+    this->fittsTest->testLabel->setVisible(true);
+    this->fittsTest->targetsLeft->setVisible(true);
+    this->fittsTest->startTest();
+
+}
 
 void TestController::cibleClicked(int x, int y){
 
+    QString newText= QString("Click on the <font color='red'><strong>RED</strong></font> targets. Number of targets chosen : <strong> %1").arg(this->sm->getNbCible());
+    QString targetsLeft = QString ("Targets left <strong> %1 </strong>").arg(this->testModel->cibleLeft-1);
     if(this->testModel->cercleCenter.isEmpty()) {
         // Si vide alors premier click, on demarre le timer
         this->timer = new QElapsedTimer;
@@ -88,11 +105,12 @@ void TestController::cibleClicked(int x, int y){
         // On démarre avec la première cible
         this->testModel->clickPoints.append(QPoint(x,y));
         this->nextCible();
-        this->fittsTest->testLabel->setText("Click on the <font color='red'><strong>RED</strong></font> targets");
-
+        this->fittsTest->testLabel->setText(newText);
+        this->fittsTest->targetsLeft->setText(targetsLeft);
     }
     else {
-        this->fittsTest->testLabel->setText("Click on the <font color='red'><strong>RED</strong></font> targets");
+        this->fittsTest->testLabel->setText(newText);
+        this->fittsTest->targetsLeft->setText(targetsLeft);
         QPointF coords = this->fittsTest->graphicWidget->mapToScene(x,y);
         if(sqrt(pow(coords.x() - this->testModel->cercleCenter.last().x(),2) + pow(coords.y() - this->testModel->cercleCenter.last().y(),2)) <= this->testModel->cercleSize.last() / 2) {
             this->testModel->clicks ++;

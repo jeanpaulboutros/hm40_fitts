@@ -40,6 +40,9 @@ void FittsTest::displayTest(){
 }
 
 void FittsTest::displayStartButton(){
+    /*this->restartBtn->setVisible(false);
+    this->backBtn->setVisible(false);
+    this->saveBtn->setVisible(false);*/
     qreal factor = QGuiApplication::primaryScreen()->logicalDotsPerInch()/120;
     QHBoxLayout *btnLayout = new QHBoxLayout();
     this->testLayout->addLayout(btnLayout);
@@ -79,7 +82,9 @@ void FittsTest::startButtonClicked(){
     this->startTestBtn->setVisible(false);
     this->startTestBtn->setEnabled(false);
     this->testLabel = new QLabel("Click on the <font color='blue'><strong>blue</strong></font> target to launch the test");
+    this->targetsLeft = new QLabel("");
     this->testLayout->addWidget(testLabel);
+    this->testLayout->addWidget(targetsLeft);
     this->displayButtons();
 
     this->startTest();

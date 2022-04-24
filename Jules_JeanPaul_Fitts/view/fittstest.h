@@ -37,6 +37,7 @@ private:
     QPushButton *backBtn;
     QPushButton *startTestBtn;
     QLabel *testLabel;
+    QLabel *targetsLeft;
 
     QVBoxLayout* testLayout;
 

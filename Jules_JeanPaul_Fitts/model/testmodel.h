@@ -25,6 +25,8 @@ public:
     QList<qint64> times;
 
     FittsTest* fittsTest;
+    SettingsModel* sm ;
+
 
     float ratio = 1;
     float failedClicks = 0;

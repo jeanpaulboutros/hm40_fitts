@@ -64,9 +64,9 @@ void SettingsModel::debugValue()
 {
     qDebug("a = %f", this->a);
     qDebug("b = %f", this->b);
-    qDebug("NbCible = %d", this->nbCible);
-    qDebug("MinSize = %d", this->minSize);
-    qDebug("MaxSize = %d", this->maxSize);
+    qDebug("NbCible = %d", this->getNbCible());
+    qDebug("MinSize = %d", this->getMinSize());
+    qDebug("MaxSize = %d", this->getMaxSize());
 
 }
 

@@ -6,6 +6,7 @@
 #include <QElapsedTimer>
 #include "view/fittstest.h"
 #include "model/testmodel.h"
+#include "model/settingsModel.h"
 #include "view/view.h"
 
 class FittsTest;
@@ -23,6 +24,7 @@ public:
 private:
     FittsTest* fittsTest;
     TestModel* testModel;
+    SettingsModel* sm;
     QElapsedTimer *timer;
     View* mainView;
 
@@ -30,7 +32,7 @@ public slots:
 
     void cibleClicked(int x, int y);
     void startButtonClicked();
-
+    void restartTest();
     /*void saveConfig();
     void backToMenu();
     void restartTest();*/
