@@ -58,11 +58,16 @@ void FittsTest::displayButtons(){
     QHBoxLayout *btnLayout = new QHBoxLayout(this);
 
     this->saveBtn = new QPushButton("Save");
-    this->saveBtn->setStyleSheet("background-color : blue; color : black; font-size : "+QString::number(16*factor)+"px; font-weight : bold; padding : "+QString::number(16*factor)+"px");
+    this->saveBtn->setObjectName("save");
+
+    //this->saveBtn->setStyleSheet("background-color : blue; color : black; font-size : "+QString::number(16*factor)+"px; font-weight : bold; padding : "+QString::number(16*factor)+"px");
     this->backBtn = new QPushButton("Return to Menu");
-    this->backBtn->setStyleSheet("background-color : red; color : black; font-size : "+QString::number(16*factor)+"px; font-weight : bold; padding : "+QString::number(16*factor)+"px");
+    this->backBtn->setObjectName("backmenu");
+
+    //this->backBtn->setStyleSheet("background-color : red; color : black; font-size : "+QString::number(16*factor)+"px; font-weight : bold; padding : "+QString::number(16*factor)+"px");
     this->restartBtn = new QPushButton("Restart");
-    this->restartBtn->setStyleSheet("background-color : green; color : black; font-size : "+QString::number(16*factor)+"px; font-weight : bold; padding : "+QString::number(16*factor)+"px");
+    this->restartBtn->setObjectName("restart");
+    //this->restartBtn->setStyleSheet("background-color : green; color : black; font-size : "+QString::number(16*factor)+"px; font-weight : bold; padding : "+QString::number(16*factor)+"px");
 
     btnLayout->addWidget(this->saveBtn);
     btnLayout->addWidget(this->restartBtn);

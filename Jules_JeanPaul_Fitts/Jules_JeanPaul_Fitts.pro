@@ -54,7 +54,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    assets/stylesheet.qss
+    assets/stylesheet.qss \
+    assets/stylesheetDark.qss
 
 
 RESOURCES += \

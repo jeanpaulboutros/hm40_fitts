@@ -18,6 +18,11 @@ int main(int argc, char *argv[])
     v->loadStyleSheet(&a);
     v->show();
 
+    /* Quand on switch en dark mode:
+    QPalette darkPalette;
+    darkPalette.setColor(QPalette::Window, QColor(53,53,53));
+    qApp->setPalette(darkPalette);
+    */
 
 
     return a.exec();

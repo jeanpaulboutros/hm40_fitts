@@ -1,5 +1,5 @@
 
-QPushButton:hover, QPushButton#getData:hover, QPushButton#exit:hover{
+QPushButton:hover, QPushButton#getData:hover, QPushButton#exit:hover,QPushButton#save:hover,QPushButton#backmenu:hover,QPushButton#restart:hover {
     background-color: #e0e0e0;
 }
 QPushButton {
@@ -14,6 +14,19 @@ QPushButton {
     color:rgb(17,17,17);
 
 }
+
+QPushButton#restart,QPushButton#backmenu, QPushButton#save  {
+    color : black;
+    font-weight : bold;
+}
+QPushButton#restart   {
+    background-color : green;
+}
+
+QPushButton#save   {
+    background-color : light;
+}
+
 QPushButton:checked{
     background-color: #fcfcf9;
     border: none;
