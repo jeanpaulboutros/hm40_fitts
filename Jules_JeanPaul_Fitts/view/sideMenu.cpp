@@ -17,8 +17,8 @@ SideMenu::SideMenu(QWidget* parent) : QFrame(parent)
 
     initExitButton();
 
-
      //connect(this->getDataButton,SIGNAL(clicked()),mainController,SLOT(restartTest()));
+
 }
 
 
@@ -51,7 +51,7 @@ void SideMenu::initGetDataButton()
 {
     this->getDataButton = new QPushButton("", this);
     this->getDataButton->setObjectName("getData");
-    this->getDataButton->setCheckable(true);
+    //this->getDataButton->setCheckable(true);
 
 
     QPixmap image(":/assets/play.png");
@@ -74,36 +74,39 @@ void SideMenu::initGetDataButton()
     this->getDataButton->setSizePolicy(*buttonSizePolicy);
 
     this->upperLayout->addWidget(this->getDataButton);
+
+
 }
 
 void SideMenu::initAnalyseButton()
 {
     this->analyseButton = new QPushButton("Analyse", this);
-    this->analyseButton->setCheckable(true);
-
+    //this->analyseButton->setCheckable(true);
     QSizePolicy* buttonSizePolicy = new QSizePolicy();
     buttonSizePolicy->setHorizontalPolicy(QSizePolicy::Expanding);
     this->analyseButton->setSizePolicy(*buttonSizePolicy);
 
     this->upperLayout->addWidget(this->analyseButton);
+
 }
 
 void SideMenu::initSettingsButton()
 {
     this->settingsButton = new QPushButton("Settings", this);
-    this->settingsButton->setCheckable(true);
+    //this->settingsButton->setCheckable(true);
 
     QSizePolicy* buttonSizePolicy = new QSizePolicy();
     buttonSizePolicy->setHorizontalPolicy(QSizePolicy::Expanding);
     this->settingsButton->setSizePolicy(*buttonSizePolicy);
 
     this->upperLayout->addWidget(this->settingsButton);
+
 }
 
 void SideMenu::initHelpButton()
 {
     this->helpButton = new QPushButton("Help", this);
-    this->helpButton->setCheckable(true);
+    //this->helpButton->setCheckable(true);
 
     QSizePolicy* buttonSizePolicy = new QSizePolicy();
     buttonSizePolicy->setHorizontalPolicy(QSizePolicy::Expanding);
@@ -116,7 +119,7 @@ void SideMenu::initExitButton()
 {
     this->exitButton = new QPushButton("Exit", this);
     this->exitButton->setObjectName("exit");
-    this->exitButton->setCheckable(true);
+    //this->exitButton->setCheckable(true);
 
     QSizePolicy* buttonSizePolicy = new QSizePolicy();
     buttonSizePolicy->setHorizontalPolicy(QSizePolicy::Expanding);
@@ -124,4 +127,3 @@ void SideMenu::initExitButton()
 
     this->bottomLayout->addWidget(this->exitButton);
 }
-

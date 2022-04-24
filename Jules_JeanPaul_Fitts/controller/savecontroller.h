@@ -2,6 +2,7 @@
 #define SAVECONTROLLER_H
 
 #include "view/view.h"
+#include "view/saveMenu.h"
 #include "model/savemodel.h"
 
 

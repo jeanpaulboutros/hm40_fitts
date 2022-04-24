@@ -2,7 +2,9 @@
 #define FITTSTEST_H
 
 #include "GraphicWidget.h"
-#include "controller/controller.h"
+#include "controller/testcontroller.h"
+#include "model/testmodel.h"
+#include "view/view.h"
 
 #include <QStackedLayout>
 #include <QPushButton>
@@ -14,32 +16,46 @@
 #include <QWidget>
 #include <QLabel>
 #include <QGroupBox>
+#include <QFrame>
 
-class FittsTest :  public QObject
+class TestController;
+class TestModel;
+class View;
+class FittsTest :  public QFrame
 {
     Q_OBJECT
 
 public:
-    FittsTest(QStackedLayout *mainStack, Controller *mainController);
+    FittsTest(QWidget *parent, TestModel* testModel) ;
     ~FittsTest();
-
-    void updateValMinOfMaxSize();
-    void updateValMaxOfMinSize();
     void resizeScene();
+
 private:
+
     QPushButton *saveBtn;
     QPushButton *restartBtn;
     QPushButton *backBtn;
+    QPushButton *startTestBtn;
+    QLabel *testLabel;
+
+    QVBoxLayout* testLayout;
 
     QGraphicsScene *scene;
     GraphicWidget *graphicWidget;
-    Controller *mainController;
+    TestController *testController;
+    TestModel *testModel;
+    View* mainView;
 
-    void displayButton(QBoxLayout *settingsLayout);
-    void displayTest(QLayout *graphicLayout);
+    void displayButtons();
+    void displayTest();
+    void initStyle();
+    void displayStartButton();
 
-
-    friend Controller;
+public slots:
+    void startButtonClicked();
+    void startTest();
+    friend TestController;
+    friend TestModel;
 
 };
 

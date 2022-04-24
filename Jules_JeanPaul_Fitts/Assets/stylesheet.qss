@@ -24,15 +24,6 @@ QPushButton#getData {
 QPushButton#exit {
     background-color: #ff4f2e;
 }
-QPushButton#saveButtonHistory {
-    background-color: #EEEEEE;
-}
-QPushButton#saveButtonHistory:hover {
-    background-color: #FFFFFF;
-    border-radius: 22px;
-
-}
-
 QtCharts {
     background-color: white;
 }

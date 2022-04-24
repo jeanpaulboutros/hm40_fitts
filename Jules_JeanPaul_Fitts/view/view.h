@@ -8,6 +8,7 @@
 #include <QGuiApplication>
 #include <QScreen>
 #include <QStackedLayout>
+#include <QPushButton>
 
 
 #include "sideMenu.h"
@@ -15,10 +16,15 @@
 #include "saveMenu.h"
 #include "settingsScreen.h"
 #include "fittstest.h"
+#include "model/settingsModel.h"
 #include "model/model.h"
+#include "model/testmodel.h"
+#include "view/help.h"
 
 class Controller;
+class TestModel;
 class FittsTest;
+class SideMenu;
 
 class View : public QFrame
 {
@@ -30,22 +36,24 @@ public:
     GraphScreen* graphscreen;
     SaveMenu* saveMenu;
     SettingsScreen* settingsScreen;
+    QStackedLayout* mainStack;
 
     View();
     ~View();
     View(Model* mainModel);
-//    void initWindows(Controller *mainController);
     void loadStyleSheet(QApplication *app);
 
 
 private:
 
     Model* mainModel;
+    TestModel* testModel;
     FittsTest* fittsTest;
-    QStackedLayout* mainStack;
+    Help* help;
+    QVBoxLayout* objectsOnPage;
+    Controller* mainController;
 
     void initWindows();
-//    void displayTitle(QLayout *mainLayout);
 
 
 
