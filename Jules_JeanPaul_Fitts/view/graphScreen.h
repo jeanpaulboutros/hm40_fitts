@@ -1,6 +1,8 @@
 #ifndef GRAPHSCREEN_H
 #define GRAPHSCREEN_H
 
+#include "model/settingsModel.h"
+
 #include <QObject>
 #include <QFrame>
 #include <QVBoxLayout>
@@ -14,6 +16,7 @@
 #include <QLabel>
 #include <QBrush>
 #include <QColor>
+#include <QString>
 
 class GraphScreen : public QFrame
 {
@@ -31,20 +34,32 @@ public:
     QChart* chronChart;
     QChart* distChart;
 
-    QSlider* aValueSlider;
-    QSlider* bValueSlider;
+    QLineSeries* calculateExperimentalSeries();
+    QValueAxis* generateAxisX();
+    QValueAxis* generateAxisY();
 
-    GraphScreen(QWidget* parent);
+    QSlider* aValueSlider;
+    QLabel* aValueLabel;
+    QSlider* bValueSlider;
+    QLabel* bValueLabel;
+
+    SettingsModel* settingsModel;
+
+    GraphScreen(QWidget* parent, SettingsModel* settingsModel);
     ~GraphScreen();
 
     void createEquationView();
     void createChartView();
     void createSliders();
     void initStyle();
+    void printAValue();
+    void printBValue();
 
+    void changeChartView();
+
+private:
+    void initDistChart();
     void initChronChart();
-    void createDistChart();
-
 };
 
 

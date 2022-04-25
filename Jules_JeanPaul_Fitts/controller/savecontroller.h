@@ -15,6 +15,7 @@ private:
 
 public:
     SaveController(SaveModel* model, SaveMenu* saveScreen);
+    ~SaveController();
 
 public slots:
 

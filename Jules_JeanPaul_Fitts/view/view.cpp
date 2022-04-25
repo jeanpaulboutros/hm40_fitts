@@ -13,7 +13,7 @@ View::View(Model* mainModel) : View(){
 
     this->sideMenu = new SideMenu(this);
     this->settingsScreen = new SettingsScreen(0, this->mainModel->settingsModel);
-    this->graphscreen = new GraphScreen(this);
+    this->graphscreen = new GraphScreen(this, this->mainModel->settingsModel);
     this->saveMenu = new SaveMenu(this);
 
 

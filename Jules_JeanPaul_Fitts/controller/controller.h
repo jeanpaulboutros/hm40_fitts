@@ -5,6 +5,7 @@
 #include "view/view.h"
 #include "settingscontroller.h"
 #include "savecontroller.h"
+#include "graphscreencontroller.h"
 
 #include <QObject>
 #include <QApplication>
@@ -30,6 +31,7 @@ public:
 
     SettingsController* settingsController;
     SaveController* saveController;
+    GraphScreenController* graphScreenController;
 
 private:
     void initGame();

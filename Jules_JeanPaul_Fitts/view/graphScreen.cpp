@@ -1,12 +1,18 @@
 #include "graphScreen.h"
 
-GraphScreen::GraphScreen(QWidget* parent) : QFrame(parent)
+
+GraphScreen::GraphScreen(QWidget* parent, SettingsModel* settingsModel) : QFrame(parent)
 {
+    this->settingsModel = settingsModel;
+
     initStyle();
     createSliders();
     createChartView();
     createEquationView();
     initChronChart();
+    initDistChart();
+
+    this->chartView->setChart(this->chronChart);
 }
 
 
@@ -71,6 +77,11 @@ void GraphScreen::createSliders()
     this->aValueSlider->setMaximum(10);
     aBoxLayout->addWidget(this->aValueSlider);
 
+    this->aValueLabel = new QLabel(aBox);
+    printAValue();
+    aBoxLayout->addWidget(this->aValueLabel);
+
+
     this->sliderLayout->addWidget(aBox);
 
     /***************************************************************/
@@ -89,9 +100,22 @@ void GraphScreen::createSliders()
     this->bValueSlider->setMaximum(10);
     bBoxLayout->addWidget(this->bValueSlider);
 
+    this->bValueLabel = new QLabel(bBox);
+    printBValue();
+    bBoxLayout->addWidget(this->bValueLabel);
+
     this->sliderLayout->addWidget(bBox);
 }
 
+void GraphScreen::printAValue()
+{
+    this->aValueLabel->setText(QString::number(this->settingsModel->getA()));
+}
+
+void GraphScreen::printBValue()
+{
+    this->bValueLabel->setText(QString::number(this->settingsModel->getB()));
+}
 
 void GraphScreen::initStyle()
 {
@@ -110,20 +134,107 @@ void GraphScreen::initStyle()
 void GraphScreen::initChronChart()
 {
     this->chronChart = new QChart;
-    this->chartView->setChart(this->chronChart);
     this->chronChart->setAnimationOptions(QChart::AllAnimations);
     this->chronChart->createDefaultAxes();
     this->chronChart->setBackgroundBrush(QBrush(QColor(150,150,150,255)));
     this->chronChart->setBackgroundVisible(true);
-    this->chronChart->legend()->setLabelBrush(QBrush(QColor(0,0,0,255)));
+    this->chronChart->legend()->hide();
     this->chronChart->setTitleBrush(QBrush(QColor(0,0,0,255)));
-    this->chronChart->setTitle("Temps mis à cliquer sur une cible en fonction de la distance à parcourir pour l'atteindre");
+    this->chronChart->setTitle("Time to click against rank of target");
 
+    QLineSeries* series = calculateExperimentalSeries();
+    QValueAxis* axisX = generateAxisX();
+    QValueAxis* axisY = generateAxisY();
+
+    this->chronChart->addSeries(series);
+    this->chronChart->setAxisX(axisX, series);
+    this->chronChart->setAxisY(axisY, series);
 
     this->chronChart->setVisible(true);
 }
 
 
+QLineSeries* GraphScreen::calculateExperimentalSeries()
+{
+    int nbCible = 20;
+
+    QLineSeries* expSeries = new QLineSeries;
+
+    for(int i = 0; i < nbCible; ++i){
+        double T = i*867;
+        expSeries->append(i, T);
+    }
+
+    return expSeries;
+}
+
+QValueAxis* GraphScreen::generateAxisX()
+{
+    QPen dotted;
+    dotted.setWidth(1);
+    dotted.setColor(QColor(0,0,0));
+    QVector<qreal> dashes;
+    dashes << 4 << 4;
+    dotted.setDashPattern(dashes);
+
+    QValueAxis* axisX = new QValueAxis();
+    axisX->setTickCount(20);
+    axisX->setGridLinePen(dotted);
+    axisX->setLabelsColor(QColor(255,255,255));
+    axisX->setTitleText("rank of the target");
+
+    return axisX;
+}
+
+QValueAxis *GraphScreen::generateAxisY()
+{
+    QPen dotted;
+    dotted.setWidth(1);
+    QVector<qreal> dashes;
+    dashes << 4 << 4;
+    dotted.setDashPattern(dashes);
+    dotted.setColor(QColor(0,0,0));
+
+    QValueAxis* axisY = new QValueAxis();
+    //axisY->setTickCount(20);
+    axisY->setGridLinePen(dotted);
+    axisY->setLabelsColor(QColor(255,255,255));
+    axisY->setTitleText("Time in millisecond");
+
+    return axisY;
+}
+
+
+void GraphScreen::initDistChart()
+{
+    this->distChart = new QChart;
+    this->distChart->setAnimationOptions(QChart::AllAnimations);
+    this->distChart->createDefaultAxes();
+    this->distChart->setBackgroundBrush(QBrush(QColor(150,0,0,255)));
+    this->distChart->setBackgroundVisible(true);
+    this->distChart->legend()->hide();
+    this->distChart->setTitleBrush(QBrush(QColor(0,0,0,255)));
+    this->distChart->setTitle("Time to click against distance of to reach to target");
+
+    QLineSeries* series = calculateExperimentalSeries();
+    QValueAxis* axisX = generateAxisX();
+    QValueAxis* axisY = generateAxisY();
+
+    this->distChart->addSeries(series);
+    this->distChart->setAxisX(axisX, series);
+    this->distChart->setAxisY(axisY, series);
+
+    this->distChart->setVisible(true);
+}
+
+void GraphScreen::changeChartView()
+{
+    if(this->chartView->chart() == this->chronChart){
+        this->chartView->setChart(this->distChart);
+    }else{
+        this->chartView->setChart(this->chronChart);
+    }
+}
 
 
 

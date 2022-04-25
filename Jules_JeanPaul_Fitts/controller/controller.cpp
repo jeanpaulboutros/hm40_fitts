@@ -6,6 +6,7 @@ Controller::Controller(Model* mainModel, View* mainView)
     this->mainView = mainView;
     this->settingsController = new SettingsController(this->mainView->settingsScreen, this->model->settingsModel);
     this->saveController = new SaveController(this->model->saveModel, this->mainView->saveMenu);
+    this->graphScreenController = new GraphScreenController(this->mainView->graphscreen, this->model->settingsModel);
 
 }
 
