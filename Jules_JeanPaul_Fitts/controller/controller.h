@@ -1,11 +1,15 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+#include "model/settingsModel.h"
 #include "model/model.h"
+
 #include "view/view.h"
+
 #include "settingscontroller.h"
 #include "savecontroller.h"
 #include "graphscreencontroller.h"
+#include "testcontroller.h"
 
 #include <QObject>
 #include <QApplication>
@@ -14,8 +18,12 @@
 #include <QElapsedTimer>
 #include <Windows.h>
 
-class SaveController;
+
+class FittsTest;
+class TestController;
+class SettingsModel;
 class View;
+class SaveController;
 
 class Controller : public QObject
 {
@@ -33,21 +41,20 @@ public:
     SaveController* saveController;
     GraphScreenController* graphScreenController;
 
+
 private:
-    void initGame();
-    void finish();
-    void nextCible();
-    QElapsedTimer* timer;
     Model* model;
     View* mainView;
+    TestController* testController;
 
-private slots:
+public slots:
     void quit();
-    void startSimulation();
-    void cibleClicked(int x, int y);
-    void saveConfig();
-    void backToMenu();
+    void toTest();
+    void toGraph();
+    void toSettings();
+    void toHelp();
     void restartTest();
+
 
 };
 

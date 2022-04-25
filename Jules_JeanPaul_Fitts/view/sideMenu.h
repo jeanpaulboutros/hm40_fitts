@@ -10,7 +10,12 @@
 #include <QApplication>
 #include <QStyle>
 #include <QFont>
+#include "controller/controller.h"
+#include "model/settingsModel.h"
+#include "view/view.h"
 
+class Controller;
+class View;
 class SideMenu : public QFrame
 {
     Q_OBJECT
@@ -40,7 +45,8 @@ private:
     void initSettingsButton();
     void initHelpButton();
     void initExitButton();
-
+    Controller* mainController;
+    View* view;
 };
 
 

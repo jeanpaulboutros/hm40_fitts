@@ -1,4 +1,4 @@
-#ifndef SETTINGSMODEL_H
+    #ifndef SETTINGSMODEL_H
 #define SETTINGSMODEL_H
 
 #include <QPoint>

@@ -14,14 +14,17 @@ SOURCES += \
     controller/graphscreencontroller.cpp \
     controller/savecontroller.cpp \
     controller/settingscontroller.cpp \
+    controller/testcontroller.cpp \
     main.cpp \
     controller/controller.cpp \
     model/model.cpp \
     model/savemodel.cpp \
     model/settingsModel.cpp \
+    model/testmodel.cpp \
     view/GraphicWidget.cpp \
     view/fittstest.cpp \
     view/graphScreen.cpp \
+    view/help.cpp \
     view/saveMenu.cpp \
     view/settingsScreen.cpp \
     view/sideMenu.cpp \
@@ -32,12 +35,15 @@ HEADERS += \
     controller/graphscreencontroller.h \
     controller/savecontroller.h \
     controller/settingscontroller.h \
+    controller/testcontroller.h \
     model/model.h \
     model/savemodel.h \
     model/settingsModel.h \
+    model/testmodel.h \
     view/GraphicWidget.h \
     view/fittstest.h \
     view/graphScreen.h \
+    view/help.h \
     view/saveMenu.h \
     view/settingsScreen.h \
     view/view.h \
@@ -50,7 +56,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    assets/stylesheet.qss
+    assets/stylesheet.qss \
+    assets/stylesheetDark.qss
 
 
 RESOURCES += \

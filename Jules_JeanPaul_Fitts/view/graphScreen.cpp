@@ -267,4 +267,3 @@ void GraphScreen::changeChartView()
 
 
 
-

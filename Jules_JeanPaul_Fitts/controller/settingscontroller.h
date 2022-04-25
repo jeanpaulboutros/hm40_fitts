@@ -21,6 +21,7 @@ private:
     SettingsModel* settingsModel;
     SettingsScreen* settingsScreen;
 
+
     void addSettingsConnection();
 
 public slots:
